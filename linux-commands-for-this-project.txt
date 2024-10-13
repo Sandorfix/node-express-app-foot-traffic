@@ -1,0 +1,7 @@
+***Working in my main PC***
+
+sudo chown www-data: && sudo chmod 664 
+
+
+rsync -av --exclude='.git' ~/MAIN-FOLDER-VS-CODE-PROJECTS/app-project-foot-traffic/ nuc@192.168.1.15:/var/www/html/
+

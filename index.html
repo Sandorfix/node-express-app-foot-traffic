@@ -1,0 +1,407 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <title data-en="Maykel Jackson Tickets & Tours" data-es="Maykel Jackson Tickets & Tours"
+        data-de="Maykel Jackson Tickets & Tours" data-fr="Maykel Jackson Tickets & Tours"
+        data-it="Maykel Jackson Tickets & Tours">Maykel Jackson Tickets & Tours</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+    <meta name="description" content="Visit our shop for exciting tours and experiences in Tenerife. Discover the beauty of our local attractions!">
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css" />
+    </noscript>
+    <link rel="icon" href="/images/mj-favicon.webp" type="image/png">
+    <!-- Lobster fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lobster&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <!-- EmailJS Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="assets/js/main.js" defer></script> <!-- Use defer to ensure JS runs after HTML is loaded -->
+</head>
+
+<body class="is-preload">
+
+    <!-- Header -->
+    <section id="header">
+        <div class="inner">
+            <img src="images/mj-logo-transparent.webp" alt="Maykel Jackson Logo" class="my-logo path">
+            <h1 id="header-title"
+                data-en="Welcome to Maykel Jackson's Tours! Get your tickets for an unforgettable adventure."
+                data-es="¡Bienvenido a los Tours de Maykel Jackson! Consigue tus entradas para una aventura inolvidable."
+                data-de="Willkommen zu den Touren von Maykel Jackson! Holen Sie sich Ihre Tickets für ein unvergessliches Abenteuer."
+                data-fr="Bienvenue aux Tours de Maykel Jackson! Obtenez vos billets pour une aventure inoubliable."
+                data-it="Benvenuti ai Tour di Maykel Jackson! Prenota i tuoi biglietti per un'avventura indimenticabile.">
+                Welcome to Maykel Jackson's Tours!Get your tickets for an unforgettable
+                adventure.
+            </h1>
+
+            <p id="header-description" data-en="Join us for exciting tours and exclusive discounts. Don't miss out!"
+                data-es="Únete a nosotros para emocionantes tours y descuentos exclusivos. ¡No te lo pierdas!"
+                data-de="Begleiten Sie uns zu spannenden Touren und exklusiven Rabatten. Verpassen Sie es nicht!"
+                data-fr="Rejoignez-nous pour des visites passionnantes et des réductions exclusives. Ne manquez pas ça!"
+                data-it="Unisciti a noi per tour emozionanti e sconti esclusivi. Non perderlo!">
+                Join us for exciting tours and exclusive discounts. Don't miss out!
+            </p>
+
+
+            <ul class="actions special">
+                <li>
+                    <label id="language-label" for="language-select">Choose your language:</label>
+                    <select id="language-select" onchange="changeLanguage()">
+                        <option value="en" selected>English</option>
+                        <option value="es">Español</option>
+                        <option value="de">Deutsch</option>
+                        <option value="fr">Français</option>
+                        <option value="it">Italiano</option>
+                    </select>
+                </li>
+
+
+                <li><a href="#carousel" class="button scrolly" data-en="Discover" data-es="Descubrir"
+                        data-de="Entdecken" data-fr="Découvrir" data-it="Scoprire">Discover</a></li>
+            </ul>
+        </div>
+        <div class="floating-btn-container">
+            <button id="generateCodeBtn" class="floating-btn" onclick="generateCode()">
+                <img src="/images/giftbox.webp" alt="Generate Code">
+            </button>
+        </div>
+    </section>
+
+    <!-- Carousel Section -->
+    <section id="carousel" class="main style1 container-carousel">
+        <div class="carousel">
+            <div class="slides">
+                <img src="images/loro-siam.webp" alt="A vibrant display of exotic birds at Loro Siam">
+                <img src="images/jet-ski.webp" alt="Thrilling jet ski adventure on crystal clear waters">
+                <img src="images/quad.webp" alt="Exciting quad bike tour through rugged island terrain">
+                <img src="images/catamaran-tour.webp" alt="Tourists enjoying a relaxing catamaran tour on clear blue waters">
+                <img src="images/forest-hike.webp" alt="Hikers exploring a lush tropical forest trail surrounded by greenery">
+                <img src="images/bus-tour.webp" alt="A scenic bus tour with travelers enjoying picturesque island views">
+                <img src="images/car-hire.webp" alt="Modern rental car ready for your personalized island exploration">
+            </div>
+        </div>
+
+        <!-- Improved content container for heading and paragraph -->
+        <div class="carousel-content">
+            <h2 data-en="Amazing Deals and Surprises" data-es="Ofertas y Sorpresas Increíbles"
+                data-de="Fantastischen Angebote und Überraschungen" data-fr="Offres et Surprises Incroyables"
+                data-it="Offerte e Sorprese Straordinarie">
+                Amazing Deals and Surprises
+            </h2>
+            <p data-en="Unlock exclusive discounts and special offers on your Tenerife adventure. From discounted tour packages to free gifts with every purchase, explore the island while saving big! Whether you're seeking thrilling excursions or unique souvenirs, our deals guarantee a memorable trip without breaking the bank. Stay tuned for seasonal promotions and surprise gifts waiting just for you."
+                data-es="Descubre descuentos exclusivos y ofertas especiales en tu aventura por Tenerife. Desde paquetes turísticos con descuento hasta regalos gratis con cada compra, ¡explora la isla mientras ahorras! Ya sea que busques emocionantes excursiones o recuerdos únicos, nuestras ofertas garantizan un viaje inolvidable sin vaciarte los bolsillos. No te pierdas las promociones de temporada y las sorpresas que te esperan."
+                data-de="Nutzen Sie exklusive Rabatte und Sonderangebote für Ihr Abenteuer auf Teneriffa. Von ermäßigten Tourpaketen bis hin zu kostenlosen Geschenken bei jedem Einkauf – erkunden Sie die Insel und sparen Sie dabei! Ob Sie spannende Ausflüge oder einzigartige Souvenirs suchen, unsere Angebote garantieren eine unvergessliche Reise, ohne Ihr Budget zu sprengen. Halten Sie Ausschau nach saisonalen Aktionen und Überraschungsgeschenken, die nur auf Sie warten."
+                data-fr="Profitez de réductions exclusives et d'offres spéciales pour votre aventure à Tenerife. Des forfaits touristiques à prix réduits aux cadeaux gratuits avec chaque achat, explorez l'île tout en faisant des économies ! Que vous recherchiez des excursions palpitantes ou des souvenirs uniques, nos offres garantissent un voyage mémorable sans vous ruiner. Restez à l'affût des promotions saisonnières et des cadeaux surprises qui vous attendent."
+                data-it="Approfitta di sconti esclusivi e offerte speciali per la tua avventura a Tenerife. Dai pacchetti turistici scontati ai regali gratuiti con ogni acquisto, esplora l'isola risparmiando! Che tu sia in cerca di emozionanti escursioni o di souvenir unici, le nostre offerte garantiscono un viaggio indimenticabile senza svuotare il portafoglio. Non perdere le promozioni stagionali e le sorprese che ti aspettano.">
+                Unlock exclusive discounts and special offers on your Tenerife adventure. From discounted tour packages
+                to free gifts with every purchase, explore the island while saving big! Whether you're seeking thrilling
+                excursions or unique souvenirs, our deals guarantee a memorable trip without breaking the bank. Stay
+                tuned for seasonal promotions and surprise gifts waiting just for you.
+            </p>
+
+        </div>
+        <div class="marquee">
+            <span>
+                <p data-en="🎁 Amazing deals and gifts await on your Tenerife adventure! 🎁 Get discounts on tours, free souvenirs with select purchases, and seasonal promotions 🎁. Explore and save now! 🎁"
+                    data-es="🎁 ¡Ofertas increíbles y regalos te esperan en tu aventura por Tenerife! 🎁 Obtén descuentos en tours, souvenirs gratis con compras seleccionadas y promociones de temporada 🎁. ¡Explora y ahorra ahora! 🎁"
+                    data-de="🎁 Erstaunliche Angebote und Geschenke warten auf Ihr Teneriffa-Abenteuer! 🎁 Erhalten Sie Rabatte auf Touren, kostenlose Souvenirs bei ausgewählten Käufen und saisonale Aktionen 🎁. Entdecken und sparen Sie jetzt! 🎁"
+                    data-fr="🎁 Des offres incroyables et des cadeaux vous attendent pour votre aventure à Tenerife ! 🎁 Profitez de réductions sur les excursions, de souvenirs gratuits avec des achats sélectionnés et de promotions saisonnières 🎁. Explorez et économisez maintenant ! 🎁"
+                    data-it="🎁 Offerte incredibili e regali ti aspettano nella tua avventura a Tenerife! 🎁 Ottieni sconti sui tour, souvenir gratuiti con acquisti selezionati e promozioni stagionali 🎁. Esplora e risparmia ora! 🎁">
+                    🎁 Amazing deals and gifts await on your Tenerife adventure! 🎁 Get discounts on tours, free
+                    souvenirs with select purchases, and seasonal promotions 🎁. Explore and save now! 🎁
+                </p>
+            </span>
+
+        </div>
+    </section>
+
+    <!-- Intoduction to our services -->
+    <section id="two" class="main style2">
+        <div class="container">
+            <div class="row gtr-150">
+                <div class="col-6 col-12-medium">
+                    <ul class="major-icons">
+                        <li><span class="icon solid style1 major fas fa-info" aria-label="Information Icon"
+                                role="img"></span></li>
+                        <li><span class="icon solid style2 major fas fa-hiking" aria-label="Hiking Icon"
+                                role="img"></span></li>
+                        <li><span class="icon solid style3 major fas fa-bus" aria-label="Bus Icon" role="img"></span>
+                        </li>
+                        <li><span class="icon solid style4 major fas fa-ship" aria-label="Ship Icon" role="img"></span>
+                        </li>
+                        <li><span class="icon solid style5 major fas fa-mountain" aria-label="Mountain Icon"
+                                role="img"></span></li>
+                        <li><span class="icon solid style6 major fas fa-ticket-alt" aria-label="Ticket Icon"
+                                role="img"></span></li>
+                    </ul>
+
+                </div>
+                <div class="col-6 col-12-medium">
+                    <h2 data-en="Adventure Awaits in Tenerife" data-es="La Aventura te Espera en Tenerife"
+                        data-de="Abenteuer Erwartet Sie auf Teneriffa" data-fr="L'Aventure Vous Attend à Tenerife"
+                        data-it="L'Avventura ti Aspetta a Tenerife">
+                        Adventure Awaits in Tenerife
+                    </h2>
+                    <p data-en="Embark on thrilling journeys across Tenerife. Whether it's water sports, hiking trails, or wildlife encounters, our island offers adventures for every taste. Explore crystal-clear waters with snorkeling and scuba diving, or enjoy exhilarating boat trips and jet skiing."
+                        data-es="Embárcate en emocionantes viajes por Tenerife. Ya sean deportes acuáticos, senderos de senderismo o encuentros con la vida silvestre, nuestra isla ofrece aventuras para todos los gustos. Explora aguas cristalinas con esnórquel y buceo, o disfruta de emocionantes paseos en barco y motos de agua."
+                        data-de="Begeben Sie sich auf aufregende Reisen durch Teneriffa. Ob Wassersport, Wanderwege oder Begegnungen mit der Tierwelt, unsere Insel bietet Abenteuer für jeden Geschmack. Erkunden Sie kristallklares Wasser beim Schnorcheln und Tauchen oder genießen Sie aufregende Bootsausflüge und Jetski."
+                        data-fr="Embarquez pour des voyages palpitants à travers Tenerife. Que ce soit pour les sports nautiques, les sentiers de randonnée ou les rencontres avec la faune, notre île offre des aventures pour tous les goûts. Explorez des eaux cristallines en faisant du snorkeling ou de la plongée, ou profitez de passionnantes excursions en bateau et de jet-ski."
+                        data-it="Intraprendi emozionanti viaggi attraverso Tenerife. Che si tratti di sport acquatici, sentieri escursionistici o incontri con la fauna selvatica, la nostra isola offre avventure per tutti i gusti. Esplora acque cristalline con snorkeling e immersioni subacquee, oppure goditi emozionanti gite in barca e jet ski.">
+                        Embark on thrilling journeys across Tenerife. Whether it's water sports, hiking trails, or
+                        wildlife encounters, our island offers adventures for every taste. Explore crystal-clear waters
+                        with snorkeling and scuba diving, or enjoy exhilarating boat trips and jet skiing.
+                    </p>
+
+
+                    <p data-en="If you prefer land adventures, hike through ancient forests or up volcanic peaks for breathtaking views. For wildlife enthusiasts, observe dolphins and whales in their natural habitat or visit the island's unique nature reserves."
+                        data-es="Si prefieres las aventuras en tierra, recorre antiguos bosques o sube picos volcánicos para obtener vistas impresionantes. Para los amantes de la fauna, observa delfines y ballenas en su hábitat natural o visita las reservas naturales únicas de la isla."
+                        data-de="Wenn Sie lieber an Land unterwegs sind, wandern Sie durch uralte Wälder oder besteigen Sie vulkanische Gipfel für atemberaubende Ausblicke. Für Tierliebhaber gibt es Delfin- und Walbeobachtungen in freier Wildbahn oder Besuche in einzigartigen Naturschutzgebieten der Insel."
+                        data-fr="Si vous préférez les aventures terrestres, parcourez des forêts anciennes ou grimpez des sommets volcaniques pour des vues à couper le souffle. Pour les passionnés de la faune, observez les dauphins et les baleines dans leur habitat naturel ou visitez les réserves naturelles uniques de l'île."
+                        data-it="Se preferisci avventure terrestri, percorri antiche foreste o sali su cime vulcaniche per viste mozzafiato. Per gli amanti della fauna, osserva delfini e balene nel loro habitat naturale o visita le riserve naturali uniche dell'isola.">
+                        If you prefer land adventures, hike through ancient forests or up volcanic peaks for
+                        breathtaking views. For wildlife enthusiasts, observe dolphins and whales in their natural
+                        habitat or visit the island's unique nature reserves.
+                    </p>
+
+                    <p data-en="No matter your passion, Tenerife promises unforgettable experiences. Start your Tenerife story today!"
+                        data-es="No importa tu pasión, Tenerife promete experiencias inolvidables. ¡Comienza tu historia en Tenerife hoy!"
+                        data-de="Egal, wo Ihre Leidenschaft liegt, Teneriffa verspricht unvergessliche Erlebnisse. Beginnen Sie noch heute Ihre Teneriffa-Geschichte!"
+                        data-fr="Quelle que soit votre passion, Tenerife promet des expériences inoubliables. Commencez votre histoire à Tenerife dès aujourd'hui !"
+                        data-it="Qualunque sia la tua passione, Tenerife promette esperienze indimenticabili. Inizia oggi la tua storia a Tenerife!">
+                        No matter your passion, Tenerife promises unforgettable experiences. Start your Tenerife story
+                        today!
+                    </p>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Testimonials Section-->
+    <section id="three" class="main style1 special">
+        <div class="container">
+            <header class="major">
+                <h2 data-en="What Our Clients Say" data-es="Lo que Dicen Nuestros Clientes"
+                    data-de="Was Unsere Kunden Sagen" data-fr="Ce que Disent Nos Clients"
+                    data-it="Cosa Dicono i Nostri Clienti">Cosa Dicono i Nostri Clienti</h2>
+            </header>
+            <p data-en="Here are some testimonials from our satisfied clients." class="p-tag-bigger"
+                data-es="Aquí hay algunos testimonios de nuestros clientes satisfechos."
+                data-de="Hier sind einige Erfahrungsberichte unserer zufriedenen Kunden."
+                data-fr="Voici quelques témoignages de nos clients satisfaits."
+                data-it="Ecco alcune testimonianze dei nostri clienti soddisfatti.">
+            </p>
+
+            <div class="row gtr-150">
+                <div class="col-4 col-12-medium">
+                    <div class="testimonial-card">
+                        <h3 data-en="Rita" data-es="Rita" data-de="Rita" data-fr="Rita" data-it="Rita">Rita</h3>
+                        <p class="review-comment" data-en="Comments from Google Reviews."
+                            data-es="Comentarios de Google Reviews." data-de="Kommentare von Google Bewertungen."
+                            data-fr="Commentaires de Google Reviews." data-it="Commenti da Google Reviews.">
+                        </p>
+                        <p data-en="&ldquo;Just went and got some tickets from an extremely enthusiastic and friendly advisor, &lt;strong&gt;Maykel Jackson&lt;/strong&gt;. He genuinely wanted us to have a good time and was non-pushy for a sale. He gave us lots of tips for our general stay and also explained how to get the most out of our time with the tickets he provided.&rdquo;"
+                            data-es="&ldquo;Acabamos de conseguir unas entradas de un asesor extremadamente entusiasta y amigable, &lt;strong&gt;Maykel Jackson&lt;/strong&gt;. Realmente quería que pasáramos un buen rato y no fue insistente con la venta. Nos dio muchos consejos para nuestra estadía en general y también nos explicó cómo aprovechar al máximo nuestro tiempo con las entradas que nos proporcionó.&rdquo;"
+                            data-de="&ldquo;Wir haben gerade Tickets von einem äußerst begeisterten und freundlichen Berater, &lt;strong&gt;Maykel Jackson&lt;/strong&gt;, erhalten. Er wollte wirklich, dass wir eine gute Zeit haben, und war nicht aufdringlich. Er gab uns viele Tipps für unseren Aufenthalt und erklärte, wie wir das Beste aus unserer Zeit mit den Tickets machen können, die er uns gegeben hat.&rdquo;"
+                            data-fr="&ldquo;Nous venons de recevoir des billets d'un conseiller extrêmement enthousiaste et amical, &lt;strong&gt;Maykel Jackson&lt;/strong&gt;. Il voulait vraiment que nous passions un bon moment et n'a pas insisté pour vendre. Il nous a donné de nombreux conseils pour notre séjour et a également expliqué comment tirer le meilleur parti de notre temps avec les billets qu'il nous a fournis.&rdquo;"
+                            data-it="&ldquo;Abbiamo appena preso dei biglietti da un consulente estremamente entusiasta e cordiale, &lt;strong&gt;Maykel Jackson&lt;/strong&gt;. Voleva davvero che ci divertissimo e non ci ha mai spinti a comprare. Ci ha dato molti consigli per il nostro soggiorno in generale e ci ha anche spiegato come sfruttare al meglio il nostro tempo con i biglietti che ci ha fornito.&rdquo;">
+                        </p>
+
+                    </div>
+                </div>
+                <div class="col-4 col-12-medium">
+                    <div class="testimonial-card">
+                        <h3 data-en="Jasmine Aderibigbe-Oni" data-es="Jasmine Aderibigbe-Oni"
+                            data-de="Jasmine Aderibigbe-Oni" data-fr="Jasmine Aderibigbe-Oni"
+                            data-it="Jasmine Aderibigbe-Oni">Jasmine Aderibigbe-Oni
+                        </h3>
+                        <p class="review-comment" data-en="Comments from Google Reviews."
+                            data-es="Comentarios de Google Reviews." data-de="Kommentare von Google Bewertungen."
+                            data-fr="Commentaires de Google Reviews." data-it="Commenti da Google Reviews.">
+                        </p>
+                        <p data-en="&ldquo;Amazing service! Many different excursion options. The man who recommended me and my five other friends, whose name is &lt;strong&gt;Maykel Jackson&lt;/strong&gt;, was so friendly and welcoming and helped us organize a boat trip. Highly recommend this service!&rdquo;"
+                            data-es="&ldquo;¡Servicio increíble! Muchas opciones de excursión. El hombre que nos recomendó a mí y a mis cinco amigos, cuyo nombre es &lt;strong&gt;Maykel Jackson&lt;/strong&gt;, fue muy amable y acogedor, y nos ayudó a organizar un viaje en barco. ¡Recomiendo mucho este servicio!&rdquo;"
+                            data-de="&ldquo;Fantastischer Service! Viele verschiedene Ausflugsmöglichkeiten. Der Mann, der mir und meinen fünf anderen Freunden empfohlen wurde, &lt;strong&gt;Maykel Jackson&lt;/strong&gt;, war so freundlich und einladend und half uns, einen Bootsausflug zu organisieren. Ich kann diesen Service sehr empfehlen!&rdquo;"
+                            data-fr="&ldquo;Service incroyable! De nombreuses options d'excursions. L'homme qui m'a recommandé, ainsi qu'à mes cinq autres amis, nommé &lt;strong&gt;Maykel Jackson&lt;/strong&gt;, était si sympathique et accueillant et nous a aidés à organiser une excursion en bateau. Je recommande vivement ce service!&rdquo;"
+                            data-it="&ldquo;Servizio straordinario! Molte opzioni di escursione. L'uomo che ha consigliato me e i miei cinque amici, di nome &lt;strong&gt;Maykel Jackson&lt;/strong&gt;, è stato così cordiale e accogliente e ci ha aiutato a organizzare un'escursione in barca. Consiglio vivamente questo servizio!&rdquo;">
+                        </p>
+
+                    </div>
+                </div>
+                <div class="col-4 col-12-medium">
+                    <div class="testimonial-card">
+                        <h3 data-en="Chris Copeland" data-es="Chris Copeland" data-de="Chris Copeland"
+                            data-fr="Pierre Martin" data-it="Chris Copeland">Chris Copeland</h3>
+                        <p class="review-comment" data-en="Comments from Google Reviews."
+                            data-es="Comentarios de Google Reviews." data-de="Kommentare von Google Bewertungen."
+                            data-fr="Commentaires de Google Reviews." data-it="Commenti da Google Reviews.">
+                        </p>
+                        <p data-en="&ldquo;Was recommended by puertodelacruz.info to visit these guys for excursion tickets and can say that personally <strong>Erik</strong> was so welcoming and didn't pressure us to buy this and that. We explained what we wanted, and he sold the whole package, including tips to avoid queues and recommendations for the best shows and times.&rdquo;"
+                            data-es="&ldquo;Me recomendaron en puertodelacruz.info para comprar entradas de excursión aquí, y puedo decir que personalmente <strong>Erik</strong> fue muy acogedor y no nos presionó para comprar esto o aquello. Le explicamos lo que queríamos, y nos vendió todo el paquete, incluyendo consejos para evitar colas y recomendaciones sobre los mejores espectáculos y horarios.&rdquo;"
+                            data-de="&ldquo;Mir wurde von puertodelacruz.info empfohlen, diese Leute für Ausflugtickets zu besuchen, und ich kann sagen, dass <strong>Erik</strong> persönlich sehr freundlich war und uns nicht unter Druck setzte, dies oder das zu kaufen. Wir erklärten, was wir wollten, und er verkaufte uns das ganze Paket, einschließlich Tipps zum Vermeiden von Warteschlangen und Empfehlungen für die besten Shows und Zeiten.&rdquo;"
+                            data-fr="&ldquo;J'ai été recommandé par puertodelacruz.info pour acheter des billets d'excursion chez eux, et je peux dire qu' personnellement <strong>Erik</strong> a été très accueillant et ne nous a pas mis de pression pour acheter ceci ou cela. Nous avons expliqué ce que nous voulions, et il nous a vendu tout le package, y compris des conseils pour éviter les files d'attente et des recommandations sur les meilleurs spectacles et horaires.&rdquo;"
+                            data-it="&ldquo;Sono stato consigliato da puertodelacruz.info di visitare questi ragazzi per i biglietti delle escursioni e posso dire che personalmente <strong>Erik</strong> è stato molto accogliente e non ci ha messi pressione per comprare qui e là. Abbiamo spiegato cosa volevamo e lui ci ha venduto l'intero pacchetto, inclusi consigli per evitare le code e raccomandazioni per i migliori spettacoli e orari.&rdquo;">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Map Section -->
+    <section id="map" class="main style2 special">
+        <div class="container">
+            <header class="major">
+                <h2 data-en="Find Us Here" data-es="Encuéntranos Aquí" data-de="Finden Sie uns hier"
+                    data-fr="Trouvez-nous ici" data-it="Trova Qui">Trova Qui</h2>
+            </header>
+            <p data-en="Visit our shop at Quintana 7, Puerto de la Cruz, Tenerife."
+                data-es="Visita nuestra tienda en la calle Quintana 7, Puerto de la Cruz, Tenerife."
+                data-de="Besuchen Sie unser Geschäft in der Quintana 7, Puerto de la Cruz, Teneriffa."
+                data-fr="Visitez notre boutique à Quintana 7, Puerto de la Cruz, Tenerife.">
+                Visita nuestra tienda en la calle Quintana 7, Puerto de la Cruz, Tenerife.
+            </p>
+
+
+            <!-- Embeded Google Map Section -->
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.0746096228545!2d-16.5519092240496!3d28.417005493834523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc6a7f92e3054e99%3A0xa01e53a02624b6f3!2sC.%20Quintana%2C%207%2C%2038400%20Puerto%20de%20la%20Cruz%2C%20Santa%20Cruz%20de%20Tenerife!5e0!3m2!1sen!2ses!4v1726872309904!5m2!1sen!2ses"
+                    width="100%" height="300" style="border:0; margin-bottom: 20px;" allowfullscreen="" loading="lazy"
+                    aria-label="Map showing the location at C. Quintana, 7, 38400 Puerto de la Cruz, Santa Cruz de Tenerife">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Section -->
+    <section id="four" class="main style2 special">
+        <div class="container">
+            <header class="major">
+                <h2 data-en="We Value Your Opinion!" data-es="¡Valoramos Tu Opinión!"
+                    data-de="Wir schätzen Ihre Meinung!" data-fr="Nous valorisons votre opinion!"
+                    data-it="Valutiamo la tua opinione!">We Value Your Opinion!</h2>
+            </header>
+            <p class="p-tag-bigger"
+                data-en="We'd love to hear from you! Your feedback is invaluable in helping us improve our services and provide you with the best experience possible. Whether you have suggestions, compliments, or concerns, please take a moment to share your thoughts with us. Thank you for helping us serve you better!"
+                data-es="¡Nos encantaría saber de ti! Tu opinión es invaluable para ayudarnos a mejorar nuestros servicios y brindarte la mejor experiencia posible. Ya sea que tengas sugerencias, cumplidos o inquietudes, tómate un momento para compartir tus pensamientos con nosotros. ¡Gracias por ayudarnos a servirte mejor!"
+                data-de="Wir würden uns freuen, von Ihnen zu hören! Ihr Feedback ist von unschätzbarem Wert, um unsere Dienstleistungen zu verbessern und Ihnen die bestmögliche Erfahrung zu bieten. Ob Sie Vorschläge, Komplimente oder Bedenken haben, nehmen Sie sich bitte einen Moment Zeit, um uns Ihre Gedanken mitzuteilen. Vielen Dank, dass Sie uns helfen, Ihnen besser zu dienen!"
+                data-fr="Nous aimerions avoir de vos nouvelles ! Votre avis est inestimable pour nous aider à améliorer nos services et à vous offrir la meilleure expérience possible. Que vous ayez des suggestions, des compliments ou des préoccupations, prenez un moment pour partager vos réflexions avec nous. Merci de nous aider à mieux vous servir!"
+                data-it="Ci piacerebbe sapere cosa ne pensi! Il tuo feedback è fondamentale per aiutarci a migliorare i nostri servizi e offrirti la migliore esperienza possibile. Se hai suggerimenti, complimenti o preoccupazioni, ti preghiamo di dedicare un momento a condividere i tuoi pensieri con noi. Grazie per aiutarci a servirti meglio!">
+                We'd love to hear from you! Your feedback is invaluable in helping us improve our services and provide
+                you with the best experience possible. Whether you have suggestions, compliments, or concerns, please
+                take a moment to share your thoughts with us. Thank you for helping us serve you better!
+            </p>
+            <form id="contact-form">
+                <div class="row gtr-uniform gtr-50">
+                    <div class="col-6 col-12-xsmall">
+                        <input type="text" name="name" id="name" 
+                               placeholder="Name" required 
+                               data-en="Name" 
+                               data-es="Nombre" 
+                               data-de="Name" 
+                               data-fr="Nom" 
+                               data-it="Nome" />
+                    </div>
+                    <div class="col-6 col-12-xsmall">
+                        <input type="email" name="email" id="email" 
+                               placeholder="Email" required 
+                               data-en="Email" 
+                               data-es="Correo Electrónico" 
+                               data-de="E-Mail" 
+                               data-fr="Email" 
+                               data-it="Email" />
+                    </div>
+                    <div class="col-12">
+                        <textarea name="message" id="message" 
+                                  placeholder="Message" rows="6" required 
+                                  data-en="Message" 
+                                  data-es="Mensaje" 
+                                  data-de="Nachricht" 
+                                  data-fr="Message" 
+                                  data-it="Messaggio"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <ul class="actions special">
+                            <li>
+                                <input type="submit" value="Send Feedback" class="primary" 
+                                       data-en="Send Feedback" 
+                                       data-es="Enviar Comentarios" 
+                                       data-de="Feedback Senden" 
+                                       data-fr="Envoyer des Commentaires" 
+                                       data-it="Invia Feedback" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <section id="footer">
+        <ul class="actions special">
+            <li><a href="#" class="button wide" data-en="Back to top" data-es="Volver Arriba" data-de="Nach Oben"
+                    data-fr="Retour en haut" data-it="Torna su">Back to top</a></li>
+        </ul>
+
+        <ul class="copyright">
+            <li data-en="&#169; MJ Tickets & Tours" data-es="&#169; MJ Tickets & Tours"
+                data-de="&#169; MJ Tickets & Tours" data-fr="&#169; MJ Tickets & Tours"
+                data-it="&#169; MJ Tickets & Tours">&#169; MJ Tickets & Tours</li>
+            <li data-en="&lt;span&gt;HTML5UP&lt;/span&gt; - Licensed under &lt;span&gt;CC BY 3.0&lt;/span&gt;"
+                data-es="&lt;span&gt;HTML5UP&lt;/span&gt; - Licencia bajo &lt;span&gt;CC BY 3.0&lt;/span&gt;"
+                data-de="&lt;span&gt;HTML5UP&lt;/span&gt; - Lizenziert unter &lt;span&gt;CC BY 3.0&lt;/span&gt;"
+                data-fr="&lt;span&gt;HTML5UP&lt;/span&gt; - Sous licence &lt;span&gt;CC BY 3.0&lt;/span&gt;"
+                data-it="&lt;span&gt;HTML5UP&lt;/span&gt; - Licenza sotto &lt;span&gt;CC BY 3.0&lt;/span&gt;">
+                Design: <span>HTML5 UP</span>. Licensed under <span>CC BY 3.0</span>
+            </li>
+        </ul>
+
+        <!-- Floating button -->
+        <div class="floating-btn-container">
+            <button id="generateCodeBtn" class="floating-btn" onclick="generateCode()">
+                <img src="/images/giftbox.webp" alt="Generate Code">
+            </button>
+        </div>
+
+        <!-- Code modal -->
+        <div id="codeModal">
+            <div class="code-display" id="generatedCode"></div>
+            <div class="instruction" id="screenshotInstruction"></div>
+            <span class="close-btn" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </span>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- Script -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            handleFormSubmission();
+        });
+    </script>
+
+
+
+</body>
+
+</html>
