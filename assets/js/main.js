@@ -211,11 +211,23 @@ document.addEventListener('DOMContentLoaded', () => {
     closeModal(); // Ensure modal is hidden on page load
 });
 
+
+// Function to fetch EmailJS configuration
+function fetchEmailJSConfig() {
+    return fetch('http://localhost:3000/api/emailjs-config')
+        .then(response => response.json())
+        .catch(error => {
+            console.error('Failed to fetch EmailJS config:', error);
+            throw error;
+        });
+}
+
 // Initialize EmailJS
-(function() {
-    // Initialize EmailJS with your public key
-    emailjs.init("ZIwDQ1nnE0mh_XGLl"); // Replace with your public key
-})();
+fetchEmailJSConfig().then(config => {
+    emailjs.init(config.publicKey);
+}).catch(error => {
+    console.error('Failed to initialize EmailJS:', error);
+});
 
 // Function to handle form submission
 function handleFormSubmission() {
@@ -253,17 +265,20 @@ function handleFormSubmission() {
         const userLang = selectedLanguage;
         const userMessages = messages[userLang] || messages['en']; // Default to English if language not found
 
-        // Send form data using EmailJS
-        emailjs.sendForm('service_i84ghgi', 'template_ymava9c', this)
-            .then(() => {
-                alert(userMessages.success); // Notify success
-                document.getElementById('contact-form').reset(); // Reset form
-            }, (error) => {
-                alert(userMessages.failure); // Notify failure
-                console.error('FAILED...', error); // Log error for debugging
-            });
+        // Fetch EmailJS config before sending
+        fetchEmailJSConfig().then(config => {
+            // Send form data using EmailJS
+            return emailjs.sendForm(config.serviceId, config.templateId, this);
+        }).then(() => {
+            alert(userMessages.success); // Notify success
+            document.getElementById('contact-form').reset(); // Reset form
+        }).catch((error) => {
+            alert(userMessages.failure); // Notify failure
+            console.error('FAILED...', error); // Log error for debugging
+        });
     });
 }
+
 
 // Combine all DOMContentLoaded event listeners
 document.addEventListener('DOMContentLoaded', () => {
