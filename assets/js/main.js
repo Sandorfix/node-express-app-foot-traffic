@@ -1,61 +1,77 @@
-// Store the selected language globally
-let selectedLanguage = localStorage.getItem('selectedLanguage') || 'en'; // Default language
+// Initialize selectedLanguage
+const selectedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+
+// Language-specific messages
+const messages = {
+    en: {
+        screenshot: "Please take a screenshot of this code.",
+        success: 'Feedback sent successfully!',
+        failure: 'Failed to send feedback. Please try again later.',
+        chooseLanguage: 'Choose your language:'
+    },
+    es: {
+        screenshot: "Por favor, toma una captura de pantalla de este código.",
+        success: '¡Comentarios enviados con éxito!',
+        failure: 'No se pudo enviar los comentarios. Por favor, inténtelo de nuevo más tarde.',
+        chooseLanguage: 'Elige tu idioma:'
+    },
+    de: {
+        screenshot: "Bitte machen Sie einen Screenshot dieses Codes.",
+        success: 'Feedback erfolgreich gesendet!',
+        failure: 'Feedback konnte nicht gesendet werden. Bitte versuchen Sie es später erneut.',
+        chooseLanguage: 'Wählen Sie Ihre Sprache:'
+    },
+    fr: {
+        screenshot: "Veuillez prendre une capture d'écran de ce code.",
+        success: 'Retour envoyé avec succès!',
+        failure: 'Échec de l\'envoi des commentaires. Veuillez réessayer plus tard.',
+        chooseLanguage: 'Choisissez votre langue:'
+    },
+    it: {
+        screenshot: "Per favore, fai uno screenshot di questo codice.",
+        success: 'Feedback inviato con successo!',
+        failure: 'Invio del feedback non riuscito. Per favore riprova più tardi.',
+        chooseLanguage: 'Scegli la tua lingua:'
+    }
+};
 
 // Function to change the language
 function changeLanguage() {
     const select = document.getElementById('language-select');
-    selectedLanguage = select.value; // Get the selected language
-    localStorage.setItem('selectedLanguage', selectedLanguage); // Store in localStorage
-    updateContent(selectedLanguage); // Update the content
-    updateLanguageLabel(selectedLanguage); // Update the label text
+    const newLanguage = select.value;
+    localStorage.setItem('selectedLanguage', newLanguage);
+    updateContent(newLanguage);
+    updateLanguageLabel(newLanguage);
 }
 
 // Function to update content based on selected language
 function updateContent(language) {
-    // Update all elements with data-* attributes
     document.querySelectorAll(`[data-${language}]`).forEach(element => {
         const key = `data-${language}`;
         if (element.tagName === 'INPUT' && element.type === 'submit') {
-            element.value = element.getAttribute(key); // Update button text
+            element.value = element.getAttribute(key);
         } else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-            element.placeholder = element.getAttribute(key); // Update placeholders
+            element.placeholder = element.getAttribute(key);
         } else {
-            element.innerHTML = element.getAttribute(key); // Update innerHTML
+            element.innerHTML = element.getAttribute(key);
         }
     });
 
-    // Update the page title
     const titleElement = document.querySelector('title');
-    document.title = titleElement.getAttribute(key) || 'Default Title'; // Use a default title if needed
+    document.title = titleElement.getAttribute(`data-${language}`) || 'Default Title';
 }
 
 // Function to update the language label
 function updateLanguageLabel(language) {
     const languageLabel = document.getElementById('language-label');
-    const labels = {
-        en: 'Choose your language:',
-        es: 'Elige tu idioma:',
-        de: 'Wählen Sie Ihre Sprache:',
-        fr: 'Choisissez votre langue:',
-        it: 'Scegli la tua lingua:'
-    };
-    languageLabel.textContent = labels[language] || labels['en'];
+    languageLabel.textContent = messages[language].chooseLanguage;
 }
 
-// Load the selected language from local storage on page load
-document.addEventListener('DOMContentLoaded', () => {
-    const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
-    document.getElementById('language-select').value = savedLanguage;
-    updateContent(savedLanguage); // Initialize content based on saved language
-    updateLanguageLabel(savedLanguage); // Initialize label based on saved language
-});
-
-// Original Photon script
+// Photon script
 (function ($) {
     var $window = $(window),
         $body = $('body');
 
-    // Breakpoints.
     breakpoints({
         xlarge: ['1141px', '1680px'],
         large: ['981px', '1140px'],
@@ -65,14 +81,12 @@ document.addEventListener('DOMContentLoaded', () => {
         xxsmall: [null, '320px']
     });
 
-    // Play initial animations on page load.
     $window.on('load', function () {
         window.setTimeout(function () {
             $body.removeClass('is-preload');
         }, 50);
     });
 
-    // Scrolly.
     $('.scrolly').scrolly();
 })(jQuery);
 
@@ -82,7 +96,6 @@ function initCarousel() {
     const slides = carousel.querySelector('.slides');
     const images = slides.querySelectorAll('img');
 
-    // Duplicate images for seamless looping
     images.forEach(img => {
         const clone = img.cloneNode(true);
         slides.appendChild(clone);
@@ -97,7 +110,6 @@ function initCarousel() {
         slides.style.transition = 'transform 0.5s ease';
         slides.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
 
-        // If we've reached the cloned set, quickly reset to the start without transition
         if (currentIndex === totalImages / 2) {
             setTimeout(() => {
                 slides.style.transition = 'none';
@@ -107,7 +119,6 @@ function initCarousel() {
         }
     }
 
-    // Advance slide every 4 seconds
     setInterval(nextSlide, 4000);
 }
 
@@ -117,6 +128,11 @@ function initImageSlider() {
     const images = document.querySelectorAll('#image-slider .slider img');
     const totalImages = images.length;
     let intervalId;
+
+    if (totalImages === 0) {
+        console.error('No images found for the image slider.');
+        return;
+    }
 
     function showImage(index) {
         images[currentIndex].classList.remove('active');
@@ -144,13 +160,9 @@ function initImageSlider() {
         }
     }
 
-    // Initialize the first image
     showImage(0);
-
-    // Start the slideshow
     startSlideshow();
 
-    // Optional: Add event listeners for user interaction
     const slider = document.querySelector('#image-slider');
 
     slider.addEventListener('mouseenter', stopSlideshow);
@@ -166,20 +178,9 @@ function initImageSlider() {
             showNextImage();
         }
 
-        // Restart the slideshow after user interaction
         startSlideshow();
     });
 }
-
-//************** Generate code feature ***************
-
-const messages = {
-    en: "Please take a screenshot of this code.",
-    es: "Por favor, toma una captura de pantalla de este código.",
-    de: "Bitte machen Sie einen Screenshot dieses Codes.",
-    fr: "Veuillez prendre une capture d'écran de ce code.",
-    it: "Per favore, fai uno screenshot di questo codice."
-};
 
 // Function to generate random code
 function generateCode() {
@@ -188,29 +189,17 @@ function generateCode() {
     const codeDisplay = document.getElementById('generatedCode');
     const instructionDisplay = document.getElementById('screenshotInstruction');
 
-    // Display generated code
     codeDisplay.innerHTML = code;
-
-    // Set instruction message based on the selected language
-    instructionDisplay.innerHTML = messages[selectedLanguage]; 
-
-    // Show the modal
+    instructionDisplay.innerHTML = messages[selectedLanguage].screenshot;
     codeModal.style.display = 'block';
 
-    // Close the modal after 60 seconds (60000 milliseconds)
     setTimeout(closeModal, 60000);
 }
 
-// Function to close the modal and go back to the main page
+// Function to close the modal
 function closeModal() {
     document.getElementById('codeModal').style.display = 'none';
 }
-
-// Ensure modal is hidden on page load
-document.addEventListener('DOMContentLoaded', () => {
-    closeModal(); // Ensure modal is hidden on page load
-});
-
 
 // Function to fetch EmailJS configuration
 function fetchEmailJSConfig() {
@@ -222,106 +211,46 @@ function fetchEmailJSConfig() {
         });
 }
 
-// Initialize EmailJS
-fetchEmailJSConfig().then(config => {
-    emailjs.init(config.publicKey);
-}).catch(error => {
-    console.error('Failed to initialize EmailJS:', error);
-});
-
 // Function to handle form submission
 function handleFormSubmission() {
-    const messages = {
-        en: {
-            success: 'Feedback sent successfully!',
-            failure: 'Failed to send feedback. Please try again later.',
-            screenshot: 'Please take a screenshot of this code.'
-        },
-        es: {
-            success: '¡Comentarios enviados con éxito!',
-            failure: 'No se pudo enviar los comentarios. Por favor, inténtelo de nuevo más tarde.',
-            screenshot: 'Por favor, toma una captura de pantalla de este código.'
-        },
-        de: {
-            success: 'Feedback erfolgreich gesendet!',
-            failure: 'Feedback konnte nicht gesendet werden. Bitte versuchen Sie es später erneut.',
-            screenshot: 'Bitte machen Sie einen Screenshot dieses Codes.'
-        },
-        fr: {
-            success: 'Retour envoyé avec succès!',
-            failure: 'Échec de l\'envoi des commentaires. Veuillez réessayer plus tard.',
-            screenshot: 'Veuillez prendre une capture d\'écran de ce code.'
-        },
-        it: {
-            success: 'Feedback inviato con successo!',
-            failure: 'Invio del feedback non riuscito. Per favore riprova più tardi.',
-            screenshot: 'Per favore, fai uno screenshot di questo codice.'
-        }
-    };
-
     document.getElementById('contact-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent default form submission
+        event.preventDefault();
 
         const userLang = selectedLanguage;
-        const userMessages = messages[userLang] || messages['en']; // Default to English if language not found
+        const userMessages = messages[userLang] || messages['en'];
 
-        // Fetch EmailJS config before sending
+        const senderEmail = this.querySelector('input[name="email"]').value;
+        const senderName = this.querySelector('input[name="name"]').value;
+        const messageContent = this.querySelector('textarea[name="message"]').value;
+
         fetchEmailJSConfig().then(config => {
-            // Send form data using EmailJS
+            emailjs.init(config.publicKey);
+            const formData = new FormData(this);
+
+            formData.append('from_email', senderEmail);
+            formData.append('from_name', senderName);
+            formData.append('message', messageContent);
+
             return emailjs.sendForm(config.serviceId, config.templateId, this);
         }).then(() => {
-            alert(userMessages.success); // Notify success
-            document.getElementById('contact-form').reset(); // Reset form
+            alert(userMessages.success);
+            document.getElementById('contact-form').reset();
         }).catch((error) => {
-            alert(userMessages.failure); // Notify failure
-            console.error('FAILED...', error); // Log error for debugging
+            alert(userMessages.failure);
+            console.error('FAILED...', error);
         });
     });
 }
 
-
-// Combine all DOMContentLoaded event listeners
+// Initialize everything when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
     document.getElementById('language-select').value = savedLanguage;
-    updateContent(savedLanguage); // Initialize content based on saved language
-    updateLanguageLabel(savedLanguage); // Initialize label based on saved language
+    updateContent(savedLanguage);
+    updateLanguageLabel(savedLanguage);
 
-    initCarousel(); // Initialize carousel
-    initImageSlider(); // Initialize image slider
-    handleFormSubmission(); // Handle form submission
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    const carousel = document.querySelector('.carousel');
-    const slides = carousel.querySelector('.slides');
-    const images = slides.querySelectorAll('img');
-
-    // Duplicate images for seamless looping
-    images.forEach(img => {
-        const clone = img.cloneNode(true);
-        slides.appendChild(clone);
-    });
-
-    let currentIndex = 0;
-    const totalImages = slides.children.length;
-    const imageWidth = carousel.clientWidth;
-
-    function nextSlide() {
-        currentIndex++;
-        slides.style.transition = 'transform 0.5s ease';
-        slides.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
-
-        // If we've reached the cloned set, quickly reset to the start without transition
-        if (currentIndex === totalImages / 2) {
-            setTimeout(() => {
-                slides.style.transition = 'none';
-                currentIndex = 0;
-                slides.style.transform = `translateX(0)`;
-            }, 500);
-        }
-    }
-
-    // Advance slide every 4 seconds
-    setInterval(nextSlide, 4000);
+    initCarousel();
+    initImageSlider();
+    handleFormSubmission();
+    closeModal();
 });
