@@ -1,0 +1,5 @@
+**********In nuc or production server running apache settings***********
+
+in main.js file in the emailjs section this: return fetch('https://quintana7.com/api/emailjs-config')
+
+in apache configs this:

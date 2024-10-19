@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Function to fetch EmailJS configuration
 function fetchEmailJSConfig() {
-    return fetch('http://localhost:3000/api/emailjs-config')
+    return fetch('https://quintana7.com/api/emailjs-config')
         .then(response => response.json())
         .catch(error => {
             console.error('Failed to fetch EmailJS config:', error);
