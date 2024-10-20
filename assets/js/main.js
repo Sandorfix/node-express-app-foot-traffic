@@ -1,5 +1,5 @@
 // Initialize selectedLanguage
-const selectedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+let selectedLanguage = localStorage.getItem('selectedLanguage') || 'en';
 
 // Language-specific messages
 const messages = {
@@ -38,22 +38,24 @@ const messages = {
 // Function to change the language
 function changeLanguage() {
     const select = document.getElementById('language-select');
-    const newLanguage = select.value;
-    localStorage.setItem('selectedLanguage', newLanguage);
-    updateContent(newLanguage);
-    updateLanguageLabel(newLanguage);
+    selectedLanguage = select.value;
+    localStorage.setItem('selectedLanguage', selectedLanguage);
+    updateContent(selectedLanguage);
+    updateLanguageLabel(selectedLanguage);
 }
 
 // Function to update content based on selected language
 function updateContent(language) {
-    document.querySelectorAll(`[data-${language}]`).forEach(element => {
+    document.querySelectorAll('[data-en], [data-es], [data-de], [data-fr], [data-it]').forEach(element => {
         const key = `data-${language}`;
-        if (element.tagName === 'INPUT' && element.type === 'submit') {
-            element.value = element.getAttribute(key);
-        } else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-            element.placeholder = element.getAttribute(key);
-        } else {
-            element.innerHTML = element.getAttribute(key);
+        if (element.hasAttribute(key)) {
+            if (element.tagName === 'INPUT' && element.type === 'submit') {
+                element.value = element.getAttribute(key);
+            } else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                element.placeholder = element.getAttribute(key);
+            } else {
+                element.innerHTML = element.getAttribute(key);
+            }
         }
     });
 
@@ -125,7 +127,7 @@ function initCarousel() {
 // Function to initialize the image slider
 function initImageSlider() {
     let currentIndex = 0;
-    const images = document.querySelectorAll('#image-slider .slider img');
+    const images = document.querySelectorAll('#carousel .slides img');
     const totalImages = images.length;
     let intervalId;
 
@@ -160,10 +162,14 @@ function initImageSlider() {
         }
     }
 
+    // Initialize the first image
     showImage(0);
+
+    // Start the slideshow
     startSlideshow();
 
-    const slider = document.querySelector('#image-slider');
+    // Optional: Add event listeners for user interaction
+    const slider = document.querySelector('#carousel');
 
     slider.addEventListener('mouseenter', stopSlideshow);
     slider.addEventListener('mouseleave', startSlideshow);
@@ -178,6 +184,7 @@ function initImageSlider() {
             showNextImage();
         }
 
+        // Restart the slideshow after user interaction
         startSlideshow();
     });
 }
@@ -245,9 +252,13 @@ function handleFormSubmission() {
 // Initialize everything when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+    selectedLanguage = savedLanguage;
     document.getElementById('language-select').value = savedLanguage;
     updateContent(savedLanguage);
     updateLanguageLabel(savedLanguage);
+
+    // Add event listener for language change
+    document.getElementById('language-select').addEventListener('change', changeLanguage);
 
     initCarousel();
     initImageSlider();
