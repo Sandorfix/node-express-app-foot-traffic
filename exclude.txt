@@ -1,5 +1,0 @@
-.git
-.env
-github-token.txt
-linux-commands-for-this-project.txt
-exclude.txt

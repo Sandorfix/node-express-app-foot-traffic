@@ -10,3 +10,4 @@ logs/
 
 # Other files to ignore
 
+.env
